@@ -133,6 +133,12 @@ export const playback = {
       return
     }
 
+    // avoid auto-play policy
+    if (isMobile.apple.device) {
+      window.open(songStore.getSourceUrl(song))
+      return
+    }
+
     if (queueStore.current) {
       queueStore.current.playbackState = 'stopped'
     }
